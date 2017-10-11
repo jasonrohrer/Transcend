@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#
+# Modification History
+#
+# 2004-January-15    Jason Rohrer
+# Added bash path.
+# Fixed string comparison operator.
+#
+
+
+cd Transcend
+chmod u+x ./configure
+./configure
+
+echo "Building portaudio..."
+
+cd portaudio
+chmod u+x ./configure
+./configure
+make
+cd ..
+
+echo "Building Transcend..."
+
+cd game
+make
+cd ..
+
+
+
+cd ..
+
+cp Transcend/game/Transcend ./TranscendApp
+cp -r Transcend/levels .
+cp Transcend/doc/how_to_*.txt .
+
+echo "Run TranscendApp to play."
+
+
+
+

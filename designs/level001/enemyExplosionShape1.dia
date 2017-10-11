@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<dia:diagram xmlns:dia="http://www.lysator.liu.se/~alla/dia/">
+  <dia:diagramdata>
+    <dia:attribute name="background">
+      <dia:color val="#ffffff"/>
+    </dia:attribute>
+    <dia:attribute name="paper">
+      <dia:composite type="paper">
+        <dia:attribute name="name">
+          <dia:string>#A4#</dia:string>
+        </dia:attribute>
+        <dia:attribute name="tmargin">
+          <dia:real val="2.8222"/>
+        </dia:attribute>
+        <dia:attribute name="bmargin">
+          <dia:real val="2.8222"/>
+        </dia:attribute>
+        <dia:attribute name="lmargin">
+          <dia:real val="2.8222"/>
+        </dia:attribute>
+        <dia:attribute name="rmargin">
+          <dia:real val="2.8222"/>
+        </dia:attribute>
+        <dia:attribute name="is_portrait">
+          <dia:boolean val="true"/>
+        </dia:attribute>
+        <dia:attribute name="scaling">
+          <dia:real val="1"/>
+        </dia:attribute>
+        <dia:attribute name="fitto">
+          <dia:boolean val="false"/>
+        </dia:attribute>
+      </dia:composite>
+    </dia:attribute>
+    <dia:attribute name="grid">
+      <dia:composite type="grid">
+        <dia:attribute name="width_x">
+          <dia:real val="1"/>
+        </dia:attribute>
+        <dia:attribute name="width_y">
+          <dia:real val="1"/>
+        </dia:attribute>
+        <dia:attribute name="visible_x">
+          <dia:int val="1"/>
+        </dia:attribute>
+        <dia:attribute name="visible_y">
+          <dia:int val="1"/>
+        </dia:attribute>
+      </dia:composite>
+    </dia:attribute>
+    <dia:attribute name="guides">
+      <dia:composite type="guides">
+        <dia:attribute name="hguides"/>
+        <dia:attribute name="vguides"/>
+      </dia:composite>
+    </dia:attribute>
+  </dia:diagramdata>
+  <dia:layer name="Background" visible="true">
+    <dia:object type="Standard - Polygon" version="0" id="O0">
+      <dia:attribute name="obj_pos">
+        <dia:point val="-1,-6"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="-3.2118,-6.05;1.25322,-3.81749"/>
+      </dia:attribute>
+      <dia:attribute name="poly_points">
+        <dia:point val="-1,-6"/>
+        <dia:point val="1,-4"/>
+        <dia:point val="-3,-6"/>
+      </dia:attribute>
+      <dia:attribute name="inner_color">
+        <dia:color val="#ff00ff"/>
+      </dia:attribute>
+      <dia:attribute name="show_background">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+    </dia:object>
+    <dia:object type="Standard - Polygon" version="0" id="O1">
+      <dia:attribute name="obj_pos">
+        <dia:point val="1,-4"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="-0.0493197,-4.00822;1.05,2.01581"/>
+      </dia:attribute>
+      <dia:attribute name="poly_points">
+        <dia:point val="1,-4"/>
+        <dia:point val="1,-1"/>
+        <dia:point val="0,2"/>
+      </dia:attribute>
+      <dia:attribute name="inner_color">
+        <dia:color val="#ff00ff"/>
+      </dia:attribute>
+      <dia:attribute name="show_background">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+    </dia:object>
+    <dia:object type="Standard - Polygon" version="0" id="O2">
+      <dia:attribute name="obj_pos">
+        <dia:point val="-1,-5"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="-1.06299,-5.0874;1.05539,2.32695"/>
+      </dia:attribute>
+      <dia:attribute name="poly_points">
+        <dia:point val="-1,-5"/>
+        <dia:point val="0,2"/>
+        <dia:point val="1,-4"/>
+      </dia:attribute>
+      <dia:attribute name="inner_color">
+        <dia:color val="#ff00ff"/>
+      </dia:attribute>
+      <dia:attribute name="show_background">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+    </dia:object>
+    <dia:object type="Standard - Polygon" version="0" id="O3">
+      <dia:attribute name="obj_pos">
+        <dia:point val="-1,-5"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="-1.05,-5.00707;0.0494975,2.01213"/>
+      </dia:attribute>
+      <dia:attribute name="poly_points">
+        <dia:point val="-1,-5"/>
+        <dia:point val="0,2"/>
+        <dia:point val="-1,-2"/>
+      </dia:attribute>
+      <dia:attribute name="inner_color">
+        <dia:color val="#ff00ff"/>
+      </dia:attribute>
+      <dia:attribute name="show_background">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+    </dia:object>
+    <dia:object type="Standard - PolyLine" version="0" id="O4">
+      <dia:attribute name="obj_pos">
+        <dia:point val="-1,-6"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="-3.04472,-6.04472;1.05,2.01581"/>
+      </dia:attribute>
+      <dia:attribute name="poly_points">
+        <dia:point val="-1,-6"/>
+        <dia:point val="1,-4"/>
+        <dia:point val="1,-1"/>
+        <dia:point val="0,2"/>
+        <dia:point val="0,2"/>
+        <dia:point val="-1,-2"/>
+        <dia:point val="-1,-5"/>
+        <dia:point val="-3,-6"/>
+      </dia:attribute>
+      <dia:attribute name="line_color">
+        <dia:color val="#27ff00"/>
+      </dia:attribute>
+      <dia:connections>
+        <dia:connection handle="0" to="O0" connection="0"/>
+        <dia:connection handle="1" to="O0" connection="2"/>
+        <dia:connection handle="2" to="O1" connection="2"/>
+        <dia:connection handle="3" to="O1" connection="4"/>
+        <dia:connection handle="4" to="O1" connection="4"/>
+        <dia:connection handle="5" to="O3" connection="4"/>
+        <dia:connection handle="6" to="O0" connection="3"/>
+        <dia:connection handle="7" to="O0" connection="4"/>
+      </dia:connections>
+    </dia:object>
+  </dia:layer>
+</dia:diagram>

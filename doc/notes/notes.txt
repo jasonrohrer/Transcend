@@ -1,0 +1,1113 @@
+June 11, 2004
+
+Thinking about the object parameter mapping.
+
+Each mapping is specified by a series of control points in the [0,1] space.
+The [0,1] parameter is used to linearly mix these control points.
+
+
+Each control point has the following elements:
+
+--parameterAnchor
+--numPolygonVertices
+--XY values for each vertex
+--RGBA fill color for each vertex
+--RGBA border color for each vertex
+--Border line width
+--numRotatedCopies (number of copies of base vertices to draw at evenly spaced
+                    angles to create a "flower" effect)                    
+--rotationRate (rotations per second, positive for clockwise, negative for ccw)
+
+RGBA can be a color name from the color folder
+
+
+Two sample control points for a ship:
+
+1.0
+3
+0 1
+shipNoseColor clearColor 0
+-1 -1
+shipWingForwardColor clearColor 0
+1 -1
+shipWingForwardColor clearColor 0
+0
+0
+
+
+0
+3
+0 1
+shipNoseColor clearColor 0
+-1 -1
+shipWingBackwardColor clearColor 0
+1 -1
+shipWingBackwardColor clearColor 0
+0
+0
+
+
+Code for dealing with this:
+
+
+DrawableObject class:
+--Can draw itself into the current GL context
+--Draw function takes a scale factor, a rotation, and an offset vector
+
+ParameterizedObject class:
+--Can read a parameterized object from a file.
+--Can map a [0,1] parameter to a DrawableObject
+
+
+
+Added DrawableObject and changed game to create 50 test objects... they work.
+Checked for memory leaks.
+
+Next:
+Use gprof to look for hotspots in code
+write ParameterizedObject
+
+
+
+
+
+June 13, 2004
+
+How to blend two vertext sets that have different numbers of vertices?
+
+Each vertex in the larger set needs to pick its "closest" vertex
+in the smaller set and blend toward that vertex.  Thus, we may have
+two vertices from the larger set that are both approaching one vertex
+from the smaller set.
+
+Space the vertices from both sets out evenly, in order, with an
+extra parameter in the range [0,1].  For example, if we have 3 vertices,
+they will be assigned this etra parameter as follows:
+
+0.0  vertex 0
+0.5  vertex 1
+1.0  vertex 2
+
+If our other set has 5 vertices, the assignment would be as follows:
+
+0.0  vertex 0
+0.25 vertex 1
+0.5  vertex 2
+0.75 vertex 3
+1.0  vertex 4
+
+In this case, vertices 2 and 4 from the larger set would blend with
+vertices 1 and 5 from the smaller set, respectively.
+
+Actually, the easiest way to achieve this would be to convert the
+vertex index number of the larger set into a floating point value
+in the index range of the smaller set and then round these numbers
+to integer indices.
+
+For example, if x is an index in our 5-vertex set, the we would
+find its partner in the 3-vertex set with:
+
+rint( ( (double)x / 4.0 ) * 2.0 )
+
+
+
+This code works well, and it produces a nice effect.
+
+However, having the base object be one polygon seems limiting... 
+Could there be a way to specify "break points" in the vertex list
+to break the list into multiple polygons?
+
+How would we blend between two such points?  How could we avoid "popping"
+as a vertex becomes part of another polygon during one of these blends?
+
+Maybe it doesn't matter... maybe single polygons are good enough...
+after all, a polygon can be quite complicated.
+
+But what if graphics cards don't draw polygongs as fast as they draw
+triangles?  This could be true...
+
+Develop for now with only one polygon at each control point... use
+rotated copies to achieve more complex effects, for now.
+
+Checked for memory leaks (and fixed one).
+
+
+Next:
+Write code to read control point in from file.
+
+
+
+June 14, 2004
+
+Idea for bullet powerups:
+
+Bullets have a 3-parameter power space (similar to RGB), with each
+parameter in the range [0,1].
+
+For each level, we define 3 object spaces for bullets.  The 3-parameter
+power up space is used to select 3 objects (one from each object space).
+
+Those three objects are combined (overlapped, or maybe chained?) to make
+a bullet.  Maybe those 3 objects could even be blended over the course
+of the bullet's life (close range, bullet looks like object 0, then
+farther out, it blends toward object 1, and finally toward object 2).
+
+The power of the bullet can be equal to the sum of the 3 parameters (or, if
+doing the range blend, the bullet's power can change over its range smoothly
+through each parameter level).
+
+How sculputure pieces affect bullet powerups:
+
+We define a space of object control points for sculpture pieces.
+That space also includes an extra space of 3-parameter bullet control
+points.  For example, a sculputure piece might map into the bullet powerup
+space as:
+
+0.05, 0.0, 0.1
+
+Thus, it would add this much to the current bullet parameters if it were
+added to the sculpture.
+
+How to reward sculpture symmetry:
+
+The environment will start out with a sculpture base that pieces will need
+to touch initially to become part of the sculpture.
+
+We can compute the "center of mass" of the sculpture by averaging the positions
+of all of the pieces.  Then, we can compute the distance from this mass center
+to the sculpture base.  We can then scale the power of the bullets inversly by
+ this distance, maybe scaling bullet size to show the changes in power.
+
+Once the bullet parameters reach 1, 1, 1 (and with a relatively symmetrical
+sculpture), the bullets should be strong enough to defeat the boss in a few
+shots.  Higher levels can be made harder with the following factors:
+
+--Sculputure pieces upgrade bullets by a smaller amount
+--More enemies
+--Boss fires more
+
+
+Ship damage idea:
+Always draw a teather line back to the sculpture center (can change color
+depending on current bullet powerup... maybe with RGB and then width according
+to bullet power).
+
+When ship is hit by enemy/boss bullets, ship is pulled back toward sculputure
+center, bit by bit, depending on bullet strength.  No death for ship, but being
+pushed away from boss makes it hard to shoot/destroy boss.
+
+Enemies try to shoot both ship and sculpture pieces (sculpture pieces can
+be destroyed... or maybe just dislodged from sculpture).
+
+
+Boss idea:
+Define an object control point space for each boss.  Map into that space
+with 1 when the boss is at full health and 0 when the boss is about to die
+(so as you shoot the boss, it gradually changes form).
+
+Boss fires faster and faster as it approaches death.
+
+All bullets in the game
+
+Explosion idea:
+Each level defines two explosion control point spaces (boss explosion and 
+general enemy explosion)
+
+Map from 0 to 1 gradually in an explosion space to animate the explosion. 
+
+
+
+Got it to compile on Mac OS X (after adding missing glutInit call).  Good.
+
+
+Wrote code to read control points from file.
+Added test code to game.
+Checked for memory leaks.
+
+
+Next:
+write ParameterizedObject
+
+
+
+
+June 15, 2004
+
+Got ParameterizedObject fully working and wrote test code in game.cpp.
+
+Tested for memory leaks.
+
+
+Next:
+
+Start working on a Bullet class.
+
+Changing it a bit:
+A bullet has 2 parameters:
+
+First parameter controls bullet's form/power at close range
+Second parameter controls form/power at distant range.
+
+
+Ship bullet settings read from a file.
+File contains two strings (names of the 2 object parameter space files).
+
+
+Finished ship bullet class.
+
+Need to add code to game to test it... maybe some class to manage the bullets?
+
+
+
+June 16, 2004
+
+Wrote a ShipBulletManager... for some reason, only one bullet fires at a time
+in game.cpp test code.  More testing needed.
+
+
+June 18, 2004
+
+Fixed bug in ShipBulletManager and added proper test code to game.cpp
+
+Tested for memory leaks.
+
+
+Turning wrapping off should result in a 9-fold framerate increase.  Worth
+it for now until more intelligent wrapping is coded... if ever.  Better
+wrapping would only show visible copies of world.
+
+Idea:
+Each object can include a "max radius estimate" that the object designer
+provides.  This can be used to avoid drawing objects that are off the screen.
+
+Still need to figure out how to determine what is on the screen.
+
+
+Next:
+Start working on enemies
+
+
+EnemyManager:
+--Called to draw enemies for each frame.
+--Controls enemy behavior (in a passTime function)
+--Tests enemies for collisions with ship bullets and activates explosion
+  animations.
+
+
+Explosions are working.
+
+
+
+Next:
+--Check for memory leaks
+--Add code to enemy manager to fade out last frame of explosion animation
+  for a bit of extra time before destroying enemy
+  (Maybe something similar for bullet manager).
+
+
+Checked for (and fixed) memory leaks.
+
+Problem:
+GL_POLYGONs cannot be concave.
+Impossible to avoid concave polygons in the general case when blending shapes,
+even when the end-point shapes are convex.
+
+Better:
+Each object is comprised of a line-loop (border) and series of triangles.
+Vertex arrays can be the same as before, except they must now have lengths
+that are multiples of 3 so that they can be interpreted as triangles
+
+There must be a separate array for the border.
+
+Also, the border vertices can be used for collision detection.
+
+Vertex blending code can remain the same...
+
+
+New format for a control point:
+
+--parameterAnchor
+--numTriangleVertices  (must be multiple of 3... vertex list truncated if not
+                        a multiple of 3)
+--XY values for each vertex
+--RGBA fill color for each triangle vertex
+
+--numBorderVertices
+--XY values for each border vertex
+--RGBA border color for each border vertex
+--Border line width
+
+--numRotatedCopies (number of copies of base vertices to draw at evenly spaced
+                    angles to create a "flower" effect)                    
+--rotationRate (rotations per second, positive for clockwise, negative for ccw)
+
+RGBA can be a color name from the color folder
+
+
+
+June 19, 2004
+
+Changed to use new format for control points (separate border and triangles).
+
+Fixed ship and bullets to match format.
+
+Still need to fix enemy files.
+
+
+
+June 20, 2004
+
+Fixed enemy files to match new format.... it's a lot of work.
+
+To make blending work (i.e., not look weird), all control points need to have 
+the same number of triangles.  Not as nice as general polygon blending...
+wish there was a way around this issue.
+
+Eventually, should make a GL-based editor for DrawableObjects... can be 
+keyboard controled (one key cycles through vertices, and other keys modify
+the current vertex in various ways).
+
+
+Now we can use border vertices for collision detection...
+
+Can compute enemy center by taking weighted average of all border vertices.
+Can compute radius using furthest border point from center.
+
+For bullet collision detection, test each bullet border:  is it inside
+the enemy's radius?
+
+
+Always slant things in favor of player:
+Example:
+--Enemy radius computed using furthest point from center
+--Player ship radius computed using closest point to center
+
+
+Noticing that there are gaps in the polygon meshes at various
+blend points...  This is because the current designs have
+polygon vertices that merely "line up" with the edge of another
+polygon (instead of sharing a vertex with that polygon).
+
+For proper blending, polygons that share and edge must share
+both vertices....  i.e., we must have a true triangle mesh.
+
+
+Next:
+--Fix enemy and explosion meshes (start over?)
+--Work on bullet collisions
+
+
+June 21, 2004
+
+Got bullet collisions working.
+Added enemy bullets and impacts on ship.
+
+Still need to check for memory leaks.
+
+Fixed several memory leaks.
+
+
+Got enemies to attack sculpture.
+(This makes it very hard).
+
+Checked for leaks.
+
+
+
+
+
+
+August 6, 2004
+
+Parameterized sound samples.
+
+Each control point has:
+
+--an anchor in the range [0,1]
+--a waveform (a series of wave control points with x values in the 
+  range [0,1] and y values in the range [-1,1]).
+--a freqency (how many times the waveform plays per second)
+--a loudness in the range [0,1]
+
+
+
+Ship bullet has two sound param spaces.
+
+Close range space and far range space.
+
+When ship fires, close range and far range params select 2 sound control
+points, and these points are blended across the duration of the firing sound.
+
+A PlayableSound implementation can take two SoundParameterSpaceControlPoints
+and blend them to generate samples.
+
+
+
+In practice, this is too slow, since a separate blend has to be made for
+each sound sample.  This cannot be done in realtime on my test machine, and
+doing it offline ahead of time (at game startup) is quite slow too, even
+for a 1-second sound.  The resulting sound, however, sounds quite nice.
+
+If we do only one blend per buffer of samples requested by the soundcard,
+then we can do it in realtime, but there is a "stepping" artifact in the
+sound as it changes over time (not a smooth blend, of course).
+
+Whatever we do, it needs to be realtime, since we want the sound to change
+according to power-up level (or boss anger level).
+
+Instead of blending per-sample, we will have to generate a single sound
+control point based on the current power-up level.  When a bullet is fired,
+we can get sound samples from that single control point.  Each sound will be
+relatively static sounding (sound won't change character as it plays).
+However, sounds can change as power-up status changes.
+
+To make things more interesting, we can add extra features to a single control 
+point, like:
+
+--both start and end frequency (linear blend as sound plays) instead of one
+  static frequency
+--both start and end loudness (linear blend again).
+
+It is possible to pull samples from an interpolated wave table in realtime,
+at least for wavetables that have very few control points (in my tests).
+
+Sine tones are nice, though, and accurately representing a sine might take
+a lot of control points.  Could use forumlas instead of control-point 
+wavetables, but this would make blending control points impossible.
+
+Actually, game sound might be unique if everything was sine-based... 
+like my song "a real civilization".  Maybe this will push us away from
+control-point wavetables.
+
+Each control point could instead have a set of frequency/amplitude sine 
+components, and we could approximate square waves (and others) with appropriate
+component sets.  Plus, we could blend component sets quite easily (same 
+2-component vector blending code).
+
+
+
+
+August 9, 2004
+
+Got sine component version of SoundParameterSpaceControlPoints working.
+
+Next:
+Work on ParameterizedSoundSpace
+
+
+August 12, 2004
+
+Got ParameterizedStereoSound working.  Checked for memory leaks.
+
+
+Currently, 3 simultaneous sounds causes skipping.  Halving the sample
+rate doubles the number of simultaneous sounds.
+
+Next:  change sound control point so that blocks of samples can be
+fetched at one time.
+
+
+Even with blocks of samples, 3 sounds causes skipping... Time to turn
+profiling on...
+
+Noticed a core dump when playing too many sounds at once (5 sounds when
+the limit is set to 3... probably a destruction problem)
+
+
+
+August 13, 2004
+
+Fixed the core dump by adding mutex to SoundPlayer
+
+Profiling doesn't seem to work right for OpenGL apps...  Fixed a few hot spots.
+
+
+Can hear a "clicking" sound when sounds are dropped (when too many sounds
+are playing).  Maybe we should "fade" a sound out somehow for a few frames
+before dropping it.  Maybe flag it to be dropped, then fade it out during
+the next buffer requested by the sound card.
+
+
+August 14, 2004
+
+Added fade-out before drop.
+
+Changed default sample rate to 11025 Hz.  I cannot personnally hear the 
+difference (for sine-based tones, there may be very little difference... 
+though we should observe the low Nyquist limit here).
+
+Next:
+
+--Add proper parameterized sounds for bullets of ship, enemies, and boss
+  (Two parameter spaces that are mapped by the current bullet params and then
+   blended to produce the sound control point that is played--- just like for
+   bullet graphics, except we don't blend the mapped endpoints in time).
+--Start working on music stuff.
+--Add extra space for enemy graphics:  should have both "close range space"
+  and "far range space".  Enemies should blend between these spaces (using
+  inverse exponential?) as they move closer to the ship.
+
+
+
+August 15, 2004
+
+Added BulletSound template class to implement proper parameterized sounds
+for ship bullets.  Changed ShipBulletManager to use it.  It works.
+
+--Still need to write template files for boss and enemy bullets.
+
+
+
+August 16, 2004
+
+Added template files for boss and enemy shot sounds.
+
+Need to add code for templated explosion sounds for both.
+
+Found 4 memory leaks... need to fix them.
+
+
+
+
+August 19, 2004
+
+Fixed the memory leaks.
+
+Bug in moving sculpture piece when ship hits area boundary.
+Fixed this bug.
+
+
+Added boss and enemy explosion sounds... problem in that boss explosion sound
+is overridden by multiple ship shots...  Fix:  flag certain sounds as priority
+sounds...  non-priority sounds are killed before priority sounds when too
+many sounds are playing.
+
+
+Need to check for memory leaks.
+
+Also... "close" and "far" parameters for the BulletSound class are misused
+when applied to boss explosion sounds.  Could be confusing for other 
+programmers.  Should change to a more generic 2-parameter class 
+(A and B params, maybe).
+
+
+
+
+
+August 20, 2004
+
+Added priority flags for sounds so that boss explosion is not cut off by 
+additional sounds
+
+Checked for memory leaks.
+
+
+How is music going to work?
+
+Cannot use arbitrary control-point spaces for notes because we want the music
+to be (potentially) very dense, and the sound player cannot play that many
+control-point notes at the same time.
+
+For the current sample rate, we need to generate an array of wavetables, one
+for each of the various pitch/length combinations, and have these ready
+in memory.
+
+Notes must either linearly fade-out or fade-in (fade-in accomplished [without 
+clicks!] by reading the wavetable backwards). 
+
+The wavetables are indexed by 2 parameters:
+--the pitch index in range [0, numPitches) 
+--the length index in range [0, numLengths) 
+
+The wavetable class can map these 2 parameters to a SoundSamples object.
+
+
+
+Each sculpture piece generates its music part when it is constructed.  A part
+consists of a list of notes.  Each note has a pitch index, a length index, and
+a reversal flag (to fade note in instead of out).  The piece also picks
+an overall length for its part, and the note lengths must add up to a value
+less than or equal to the overall length.
+
+
+Files controling music:
+
+--"musicNotePitches"  -- contains a list of pitches, in hertz, that notes can
+  play at  (for example:   400  200  800 )
+--"musicNoteLengths"  -- contains a list of lengths in seconds for notes
+  (for example:  1  2  .5  .25 )
+--"musicChanceReversedNote"  -- contains a single floating point value 
+  indicating the probability of a given note should be played in reverse.
+--"musicPartLength"  -- contains the length in seconds for music parts
+  (for example:  5 )
+
+
+Music player treats each horizontal grid line as a sequence of parts.  The
+sequence is assigned a stereo position based on the grid line's vertical
+position.
+
+Parts are played as if a time marker was sweeping across the grid from
+left to right, starting at the left-most in-sculpture piece, and wrapping
+back around once the right-most sculpture piece has been played.  Thus,
+gaps between pieces in the horizontal direction result in silent sections
+of the music (though there are not silent gaps at the beginning or end
+resulting from in-sculpture pieces not touching the edge of the grid---
+overal looping song length is determined by the width of the sculpture). 
+
+Thus, since the ship drops pieces on grid points, constructed songs will
+sound clean and regemented.  However, as enemies knock pieces off of these
+grid points, songs will start to "degenerate" as parts fall out of time
+with eachother.
+
+
+Music player tracks current horizontal position, wrapping back to far-left
+sculpture piece when far-right has been reached.  Position tracked in seconds.
+
+Sculpture pieces can provide samples from a particular time range of their
+part.  
+
+
+Sample generation sequence:
+
+SoundPlayer needs a block of 1000 music samples, so it calls the music player
+to get them.
+
+Music player maps current time position into grid...
+
+
+Actually, cannot generate music samples in realtime as pieces move around,
+since this might cause time pointer to jump back in time in a given sculpture's
+music part (causing clicks and breaks in the sound).
+
+Instead, need to generate an entire song loop at one time every time we wrap
+back around (using the instantaneous sculpture layout)... this would be too
+slow, though, since we would be periodically doing a large computation during 
+a single graphics frame.  Need to spread calculation out across time during
+which the sound will play.  Maybe the music player needs to gather a collection
+of notes at once (from instantaneous sculpture layout) and then produce
+samples for those notes on SoundPlayer demand.
+
+
+
+Maybe music player should maintain a list of active notes that are 
+currently playing.
+
+When SoundPlayer asks for 1000 samples, music player maps into grid, then
+maps into "currently playing" sculpture pieces and asks them each for notes
+that will *start* playing between "now" and 1000 samples from now.  These
+notes are added to the music player's list of actives.
+
+These notes can be rendered (using wavetables) to stereo-shifted samples when 
+they are added to the actives list, including silent samples at the 
+beginning to represent the fact that a note isn't playing yet
+
+Each note has:
+--A stereo sample buffer
+--A current position in the note's sample buffer
+
+Then, to generate 1000 samples, the music player walks through the active
+notes and adds the relevant samples to the 1000-sample
+buffer and updates each note's current position.  Notes that are used up 
+are dropped from the active list.
+
+As sculpture pieces move around, the music sound will remain consistent
+(will not jump backwards in individual note wavetables).
+
+
+Current grid horizontal music time position shown by highlighting the
+appropriate vertical grid line.  
+
+
+
+August 22, 2004
+
+Wrote wave table mapping class.
+
+Started work on interface for MusicPlayer.
+
+
+Need a MusicPart class (one instance for each sculpture piece).
+
+Features:
+-- Constructor that, given music parameters, will generate its own notes
+-- getNotesStartingInInterval function
+
+int (numNotes) getNotesStartingInInterval( 
+    double inStartTimeInSeconds, 
+    double inLengthInSeconds,
+    int **outNotePitchIndices,
+    int **outNoteLengthIndices,
+    double **outNoteStartOffsetsInSeconds );
+
+
+
+To generate samples, MusicPlayer will compare its current grid posistion
+against the position of each in-sculpture piece.  If the grid position falls
+inside a piece's part, the Player will map the grid position to an in-part
+time (e.g., into the range [0,5] if parts are 5 seconds long) and then
+ask the sculpture piece for notes that start in that range (by calling
+getNotesStartingInInterval for the piece's MusicPart).
+
+Each note obtained in this way is rendered to a SoundSamples object using 
+--the MusicNoteWaveTable,
+--the stereo position of the sculpture piece, and 
+--the note's start offset.  
+The SoundSamples object is added to the list of active notes.
+
+
+
+
+Got music working...  it sounds pretty cool.
+
+
+August 23, 2004
+
+Still a few more tweaks:
+
+X-More testing... notes sound like they are overlapping, even when
+  only one sculpture piece is playing.
+X-Check for leaks.
+X-Set note stereo position based on vertical piece position.
+X-Show highlight line on grid as current play position.
+
+
+Sounds very nice... cursor looks good
+
+
+August 24, 2004
+
+Next:
+--Add extra space for enemy graphics:  should have both "close range space"
+  and "far range space".  Enemies should blend between these spaces (using
+  inverse exponential?) as they move closer to the ship.
+
+
+Added code for this, and modified the level files a bit to test it...
+Seems to work.
+Need to write control point editor to speed up the modification process and 
+test it further.
+
+Need to tweak the inverse exponential formula so that enemies warp at a good
+rate as they approach the ship.
+
+Also checked for leaks.
+
+
+Next:
+ObjectParameterSpaceControlPoint editor.
+
+
+
+
+August 27, 2004
+
+Got all editor features working.
+
+Trying to compile/run on Mac.
+
+Opening the SoundPlayer causes the mac environment to reset the CWD...
+
+Need to set the CWD *after* opening the sound player, perhaps... need to
+pass the path into the GameSceneHandler constructor, or make it a global.
+
+
+
+
+August 30, 2004
+
+Optimization:
+Avoided blending whenever possible (at either end of parameter ranges).
+With 10 enemies, this brought a 3 frame/second increase in performance
+(9 FPS before opt, 11.8 FPS after opt).
+
+
+
+September 26, 2004
+
+Fixed the X86 makefile (missing portaudio).  Need a new release here.
+
+0.1.2
+
+Mac filename is too long for Mac IE (truncating .dmg extension to .dm, which
+makes the file un-clickable on the desktop).
+
+Should shorten the file name.
+
+Should add a link to the GLUT source code for linux users.
+http://www.opengl.org/resources/libraries/glut/glut-3.7.tar.gz
+
+
+Suggestions from happypenguin.org users:
+
+"Although it's quite theraputic as it stands, I think it needs a bit more 
+purpose, stuff like time limits for completing a level, maybe make the 
+playfield bigger as you go (so your ship has to go further to fetch glyphs), 
+and the nasties tougher (with a few glyphs near the center, one shot generally
+deep-sixes a nasty), extra guru points for forming specific patterns and so 
+on."
+
+
+
+September 29, 2004
+
+Feedback from wavexx @ sourceforge
+
+"Speaking of the windows build 1.1; when you're about to place all the
+glyphs, the controls seems to become very difficult and unresponsive
+(the frame-rate isn't affected though), like having a "stuck" key.
+
+When fading to the next level, the boss is re-shown in full opacity for
+an instant.
+
+If you get hit, you move to the centre. I suspect this is too
+easy... It's an easy tactic to get at the centre to fight for the minor
+anti-glyphs, and it's also a good point to move to the mayor anti-glyph.
+
+Also, linking with -mwindows under mingw will eliminate the unused dos
+box :)"
+
+
+
+Ideas:
+
+--When you get all Elements in your collage, your bullets should gain
+  a special ability, like heat-seeking and extra-long distance.
+
+--Limit the number of ship bullets on the screen at one time.
+  (to make space-bar mashing ineffective)
+
+--Zoom way out while fading out and zoom in when fading back in.
+
+
+
+
+
+October 6, 2004
+
+Ideas from David Greene
+
+> 3) I liked the physics of the way the ship moved -- it reminded me of
+> an ancient TRS-80 game called "Bounceoids", where you could actually
+> hit yourself with your own shots if you were moving backward and
+> decelerating while firing.  I wished I could do something like hold
+> down the Shift key to move sideways, or even better to swing around on
+> a fixed-length umbilical.
+
+I wanted to keep the controls simple, so I avoided a "strafe" feature... but maybe the fixed length umbilical key would be interesting.  It would give some physical presence to the umbilical and make it more central to the gameplay (right now, it is basically just a status display).
+
+
+From Adaska too:
+
+request for strafe.
+
+
+October 7, 2004
+
+How to deal with counter-intuitive weak bullets that are visible but do nothing
+to minor antiglyphs?
+
+Maybe the bullet spectrum should have a particularly weak shape at 0 and
+then a much stronger shape at 0.01 so that the first collage piece causes
+a dramatic change.
+
+Also, the weakest bullet shape could cause minor antis to divide into 2.
+Maybe fun, but might be annoying.
+
+
+
+October 8, 2004
+
+From David Greene:
+
+> But I suppose there's an argument that a bullet should be recognizable
+> as a bullet... I think I like the "early fade-out" idea best, but it
+> would probably be a lot more painful to do the looking-ahead to make
+> sure the bullet disappears in time for the fading to be visible. 
+
+Well, I could just cause the bullet to start fading whenever it is within X pixels of an enemy.  That would be pretty easy.
+
+> Maybe the bullet should *bounce off* the anti-glyph instead...
+
+
+> Other possible bonuses:  two or three simultaneous bullets with every
+> shot (slightly different angles, or slightly different speeds). 
+> Larger bullets -- increase the affected area by a factor of two or so.
+>  Bullets that last indefinitely, until they go offscreen or hit
+> something -- this would be fun because you could leave "bombs" lying
+> around with just the right combination of turning and deceleration
+> (you could do that in Bounceoids...) or at least you could get very
+> slow-moving bullets.  Or, my favorite idea, a crazy "heat-seaking"
+> variant:  the bullet reverses direction at the extreme end of its
+> range and returns  to the player's ship, giving you two chances to hit
+> a target -- or double damage to the boss glyph, if you set it up
+> right.
+
+Sort of like a boomerang, no?
+
+While thinking about this, I thought about a double-bullet bonus idea:  
+When you shoot, one bullet goes straight out, as usual, but another bullet 
+travels down the umbilical, all the way back to the center.  Thus, if you are 
+clever with your ship position, you can kill minor antis that are attacking 
+your collage while you are out chasing the major antiglyph.  
+
+
+October 13, 2004
+
+Found potential cause of absent enemy bug on win32:
+When locking down maximum timejump per frame, we sometimes seen an attempted
+timejump of around 4 billion ms.  This, of course, would cause the enemies
+to jump way passed the glyph and off the grid completely.  It would take
+them forever to return.  Of course, the "in grid" constraints for the glyph
+and major anti keep those in the picture even during a huge timejump.
+
+Need to figure out why Time class is returning such a huge value.
+
+In any event, limiting timejumps is an temporary fix.
+
+
+Started working on a PortalManager class for the exit portals.
+
+
+October 14, 2004
+
+Got portal stuff working.
+Checked for memory leaks.
+
+Found bug in Time.h that botches MS calculation when the time delta goes
+beyond the next second (for example, taking diff between 1s001ms and 0s999ms
+would return a bogus value because of a sign error).
+
+This may be the cause of our "huge position jump" on win32.
+
+Since enemies would jump also during a large time jump, this fix handles
+the "no minor enemies" bug.
+
+
+Still seeing huge timejump bug in win32.  Need to investigate more.
+Maybe need to put some special code in Time.h to detect the exact source of
+the problem.
+
+Found this bug.  ANSI time() seconds and win32 GetLocalTime seconds are
+not calibrated (ANSI seconds can roll over after GetLocalTime seconds roll
+over) resulting in bad time delta calculations.
+
+Replaced this code with ANSI mktime code.  It works now (after all these
+years of using incorrect win32 timing code... yikes!)
+
+
+Ready to start working on next level.
+
+Music notes for level 3:
+A#
+C
+E
+F#
+
+Note-to-hertz table:
+http://www.jhu.edu/~signals/listen/music1.html
+
+
+
+
+Official to-do for release 0.2 (IGF-2)
+
+X-Investigate "no minor enemies" bug on win32.
+X-Add a limit on how much "time" can pass during a single frame.
+X-Zoom way out while fading out and zoom in when fading back in.
+X-Parameterize grid size
+X-Strafe keys
+X-Limit the number of ship bullets on the screen at one time.
+  (to make space-bar mashing ineffective)
+X-Make starting bullet very small and weak looking in all levels.
+X-Portal to exit after killing boss
+X-Fix key release bug.
+X-Add "skip level" key for the judges
+skip[--Add special ability when all collage pieces are in place (shots fired
+  down the umbilical?)]
+x-Add level.
+x-Make sure all portals look appropriate (level 002 portal is just a copy
+  of level 001)
+
+
+
+October 19, 2004
+
+Several suggestions by David Greene (smooth back off, boss progress, bullet
+collision indicators).
+
+
+October 21, 2004
+
+> > > I found myself wishing for some interaction between shots and glyphs again
+> > > (shots getting absorbed, bouncing off, fading out quickly, changing color?)
+> >
+> > I'll think about this... maybe something that shows when a bullet is in contact
+> >  with an enemy...  maybe an extra shape that "squirts" out, like little explosions
+> >  or flashes, during every frame in which the bullet is in contact.
+> 
+> Hmm... maybe if you morph the extra shape from a small-something to a
+> big-recognizable-something-else, depending on how badly the boss is
+> currently damaged, you could read the current status just by seeing
+> how close the extra shape is to the recognizable-something.  Color
+> could also help -- start transparent and work toward some appropriate
+> color for the level?
+
+Excellent suggestion.  This would add the needed "progress" display without covering up any part of the boss.
+
+
+> There are a couple more "jerky" spots that I thought I'd mention in passing:
+> 
+> 1)  when you pick up an element, it jumps instantaneously over to the
+> ship's location;
+> 2)  when you drop an element, it jumps instantly to the nearest
+> Go-board position.
+
+
+August 21, 2005
+
+Working on fixes for Moondance compilation release.
+
+
+August 22, 2005
+
+Worked on more fixes.
+
+Currently working on boss damage indicator.
+
+Got code to compile, but it behaves oddly, then segfaults.
+
+
+
+To do for next release:
+X-Fix zoom behavior when strafing.
+X-Fix minor anti-glyph pop-in upon creation... they should fade in instead.
+X-Make minor anti "back off" behavior more smooth.
+X-Change to allow pick-ups while a piece is being jarred... maybe force a drop
+  if the jar force is increasing?
+X-Make bullets fade out.
+X-Make pick-up radius wider to make game easier.
+X-Fix jerky pick-up and drop somehow...
+X-Add some kind of progress indicator to each boss.
+X-Add extra shapes to each level that are "spit out" whenever a bullet
+  is in contact with a target (to indicate that the target is being hit).
+X-Spit out mini-explosions can change shape depending on the health of the 
+  boss. 
+
+
+August 30, 2005
+
+Ready for 0.3 release.
+
+Checked for memory leaks.
+
+Using FreeExtractor to build windows installer 
+
+http://www.disoriented.com/FreeExtractor/
+
+
+September 1, 2005
+
+Finished 0.3 release.
+Posted online.
+
+Tagging all Transcend and minorGems sources with transcend-0_3

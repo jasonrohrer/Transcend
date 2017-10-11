@@ -1,0 +1,182 @@
+------------------
+Transcend Credits:
+------------------
+
+All programming, graphics, and music by Jason Rohrer
+
+The PortAudio library is used for cross-platform audio output.
+More information at http://www.portaudio.com
+
+
+
+
+------------------------------
+Transcend System Requirements:
+------------------------------
+
+Required:
+ -- Stereo headphones or speakers
+ -- OpenGL
+ -- Keyboard
+
+Minimum system for basic playability:
+ -- OpenGL software rendering (no 3D card)
+ -- 250 MHz processor
+
+Recommended:
+ -- 3D card that can render OpenGL
+ -- 400 MHz or faster processor
+
+
+
+
+--------------------
+Transcend's Creator:
+--------------------
+
+Jason Rohrer is a programmer, artist, and activist.  His most popular software 
+project is MUTE, an anonymous file sharing system.  Transcend was his first 
+video game effort.  Jason lives with his spouse and child in Potsdam, New York,
+where he divides his time between parenting and personal projects.
+
+
+
+
+----------------------
+Transcend Description:
+----------------------
+
+Transcend is an abstract, 2D shooter.  The morphing graphics engine creates an 
+alluring visual display.  Using musical power-ups, players simultaneously 
+construct churning visual collages, arrange unique pieces of music, and 
+strengthen their projectiles.  Transcend blurs the line between games and 
+art---is it a video game or a multimedia sculpture?
+
+
+
+
+-------------------
+Transcend Features:
+-------------------
+
+ -- intricate, abstract visual style
+
+ -- dynamic graphics that bloom and morph from one complex shape to another
+
+ -- musical power-up system that lets you strengthen your projectiles while 
+    also composing a unique piece of music
+
+ -- novel collect-and-defend gameplay mechanics (no lives, health bars, or 
+    "game over" screens)
+
+
+
+
+----------------
+Transcend Genre:
+----------------
+
+Action (2D Shooter)
+
+
+
+
+--------------------
+Transcend Installer:
+--------------------
+
+Installs all files into a "Transcend" folder.  Does not touch the registry.
+
+
+
+
+------------------
+Transcend Support:
+------------------
+
+Web:    http://transcend.sf.net
+Email:  jcr13@users.sf.net
+
+
+
+-------
+Extras:
+-------
+
+The motivation for Transcend:
+
+Though I was too young during the 1980s to have participated in the golden era
+of video games as a programmer or designer, I am greatly inspired by the swell
+of creativity that occurred during that time.
+
+Computers and other game machines were quite limited, and this meant that you
+could not fit very much content into a single game.  Thus, most games were 
+distinguished by the novelty of their underlying concepts.  Having more than a
+handful of members on a particular development team was overkill, and many 
+games were created from start to finish by a single individual.
+
+We saw some amazing games during that era:  just think about Tempest,
+Centipede, Pac Man, and Defender.   Even if we look at those four games in 
+isolation, we see four dramatically different creations in almost all respects.
+From concept to gameplay to graphics, Tempest and Pac Man are about as 
+different from each other as two video games can get.
+
+Looking at the popular games of today (August of 2005), we see a handful of
+narrowly-defined genres.  Games today are mostly distinguished by their 
+settings and content.  For example, _God of War_ was just like _Devil May Cry_,
+but it was set in ancient Greece instead of in a Gothic castle.
+
+Imagine a new board game that is just like Monopoly, but set in Miami instead 
+of Atlantic City.  Would that be a unique or interesting game?  In fact, 
+Parker Brothers does market these locale-specific Monopoly modifications, but 
+no one calls them "new" games.  So why would anyone hail _God of War_ as a 
+"great new game"?    
+
+The main reason people plunk down $50 to play _God of War_ is to see the 
+graphics and experience the world that it creates.  So, they are paying for 
+special effects and a trip to ancient Greece, not for a unique or interesting 
+game.
+
+But why the short list of narrow genres?  What happened to the Tempest genre?
+There was never such a genre, ignoring a few Tempest knock-offs that appeared
+over the years.  People were too busy inventing their own new games to worry
+about building genres of nearly-identical games.
+
+We all know what happened:  games became very expensive to produce as the 
+hardware platforms became more capable and the focus moved toward content.  
+When you go from a single designer/programmer to a team of hundreds, your 
+budget skyrockets.  Game design became financially risky.  I do not need to 
+delve deeper into the history here---the simple result of this trend is 
+stifled innovation in the video game industry.
+
+But if games are boring today, how can we again start making non-boring games?
+We need to move back to single-person teams and focus on unique game ideas.
+
+Of course, there are major limits to this kind of process, especially when you
+compare it to main-stream game development:  no huge, virtual worlds;  no 
+motion-capture;  no highly-detailed polygon models or texture artwork;  and 
+no support for the PS3.
+
+Still, given these limitations, we can perhaps design fun, interesting games.
+
+Transcend was my effort to explore the development process of the golden era.
+I first came up with a unique idea for a game that was unlike any of the games
+I had ever played.  Then I designed and programmed that game by myself over
+the course of several months.
+
+The resulting game is playable on a computer that is pushing ten years old, yet
+still pulls off graphical tricks that will make you say "wow" from time to 
+time.
+
+Transcend proves that there is plenty of interesting space left to explore in
+the game design spectrum without a team of hundreds or a massive virtual 
+world. 
+
+On the other hand, just imagine what a team of hundreds could pull off with the
+latest hardware if they could just get out of the five-genre rut.   
+
+Jason Rohrer
+Potsdam, NY
+August 2005
+http://jasonrohrer.n3.net
+

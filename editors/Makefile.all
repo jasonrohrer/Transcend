@@ -1,0 +1,76 @@
+#
+# Modification History
+#
+# 2004-August-25    Jason Rohrer
+# Created.  Copied from game/Makefile.all.
+#
+
+
+##
+# The portion of editor Makefiles common to all 
+# platforms.
+# Should not be made manually---used by game1/configure to build Makefiles.
+##
+
+
+
+
+ROOT_PATH = ../..
+
+GAME_PATH = ${ROOT_PATH}/Transcend/game
+
+
+LAYER_SOURCE = \
+ ObjectControlPointEditor.cpp \
+ ${GAME_PATH}/DrawableObject.cpp \
+ ${GAME_PATH}/NamedColorFactory.cpp \
+ ${GAME_PATH}/LevelDirectoryManager.cpp \
+ ${GAME_PATH}/ParameterSpaceControlPoint.cpp \
+ ${GAME_PATH}/ObjectParameterSpaceControlPoint.cpp
+ 
+LAYER_OBJECTS = ${LAYER_SOURCE:.cpp=.o}
+
+NEEDED_MINOR_GEMS_OBJECTS = \
+ ${SCREEN_GL_O} \
+ ${TYPE_IO_O} \
+ ${STRING_UTILS_O} \
+ ${STRING_BUFFER_OUTPUT_STREAM_O} \
+ ${PATH_O} \
+ ${TIME_O} \
+ ${THREAD_O} \
+ ${MUTEX_LOCK_O}
+ 
+
+
+TEST_SOURCE = 
+TEST_OBJECTS = ${TEST_SOURCE:.cpp=.o}
+
+
+
+DEPENDENCY_FILE = Makefile.dependencies
+
+
+# targets
+
+all: objectControlPointEditor
+clean:
+	rm -f ${DEPENDENCY_FILE} ${LAYER_OBJECTS} ${TEST_OBJECTS} ${NEEDED_MINOR_GEMS_OBJECTS} objectControlPointEditor
+
+
+
+
+objectControlPointEditor: ${LAYER_OBJECTS} ${NEEDED_MINOR_GEMS_OBJECTS}
+	${EXE_LINK} -o objectControlPointEditor ${LAYER_OBJECTS} ${NEEDED_MINOR_GEMS_OBJECTS} ${PLATFORM_LINK_FLAGS}
+
+
+
+
+# build the dependency file
+${DEPENDENCY_FILE}: ${LAYER_SOURCE} ${TEST_SOURCE}
+	rm -f ${DEPENDENCY_FILE}
+	${COMPILE} -MM ${LAYER_SOURCE} ${TEST_SOURCE} >> ${DEPENDENCY_FILE}
+
+
+include ${DEPENDENCY_FILE}
+
+

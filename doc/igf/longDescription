@@ -1,0 +1,14 @@
+Transcend can best be described as retro-style, abstract, 2D shooter. The graphics are geometrical, and the pace is sometimes frenzied.
+
+
+Game play in brief:
+You are represented by a glyph that can traverse a planar grid.  The grid is populated by two enemy types:  a major anti-glyph (i.e., the boss) and a swarm of minor anti-glyphs.  The grid is also populated by harmless Element objects that you can pick up and set down with your glyph.  To win a level, you must destroy the major anti-glyph.  Your glyph starts out very weak---its initial projectiles are powerless (they cannot even destroy minor anti-glyphs).  You can build the strength of your projectiles by gathering Elements from the plane and dropping them near the center of the grid in a collage.  Minor anti-glyphs will try to break apart your collage, but you can destroy them with projectiles.  As the collage grows, so does the power of your projectiles, and they eventually become strong enough to destroy the major anti-glyph. 
+
+
+Power-up and music collage:
+Elements that are dropped near the center of the grid form a collage.  Each element represents a projectile power-up.  The Elements in your collage are combined to determine the strength and form of your glyph's projectile.   
+
+In addition to a projectile power-up, each Element represents a section of music.  A cursor traverses your collage and plays the music associated with the Elements that you have assembled.  By rearranging the elements within the collage, you can control the sequence, layering, and stereo structure
+of the music.
+
+Every time you replay a level, fresh music sections are generated for each element on the grid.  Thus, when you construct a collage to pass a level, you simultaneously create a unique song.  These songs can be strikingly intricate and beautiful, though thoughtful arrangement of collage pieces is important.  

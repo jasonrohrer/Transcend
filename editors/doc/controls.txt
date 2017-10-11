@@ -1,0 +1,54 @@
+S  --  saves the control point to file
+T  --  toggle between border vertex and triangle vertex edit modes
+N  --  select the next vertex
+M  --  switch into whole-object movement mode
+E  --  exit edit modes (switch to view movement mode)
+V  --  toggle grid visibility
+L  --  toggle vertex grouping lock 
+       (when locked, vertices that are in the same location move 
+        and are colored together)
+K  --  toggle color grouping lock 
+       (when locked, colors that are the same location are adjusted together) 
+F  --  toggle adjustment increment 
+       (switch between 0.1 and 0.001 for values and 1 and 0.1 for movement)
+
+z,Z -- decrease,increase the view zoom
+
+
+
+
+c,C -- decrease,increase the number of rotated copies
+x,X -- decrease,increase the rotated copy scale factor
+d,D -- decrease,increase the scale factor for angles between rotated copies 
+w,W -- decrease,increase the border width
+
+
+
+In triangle vertex or border vertex edit mode:
+
+r,R -- decrease,increase the red component of the selected vertex 
+g,G -- decrease,increase the green component of the selected vertex 
+b,B -- decrease,increase the blue component of the selected vertex 
+a,A -- decrease,increase the alpha component of the selected vertex 
+
+I  --  invert the color of the currently selected vertex
+
+O  --  copy the color of the currently selected vertex to the color clipboard
+U  --  set the color of the currently selected vertex to the clipboard color
+
+
+Arrow keys -- move the selected vertex
+
+Y  --  add a new triangle (3 new vertices) or border vertex, depending on the
+       mode
+H  --  remove the current triangle (3 vertices) or border vertex
+
+
+In whole-object movement mode
+
+Arrow keys -- move the whole object
+
+
+In view movement mode
+Arrow keys -- move the view
+

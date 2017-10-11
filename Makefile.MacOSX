@@ -1,0 +1,47 @@
+#
+# Modification History
+#
+# 2002-September-9    Jason Rohrer
+# Created.
+#
+# 2003-November-2   Jason Rohrer
+# Moved minorGems platform prefixes into platform-specific Makefile templates.
+#
+
+
+##
+# The common MacOSX portion of Makefiles.
+# Should not be made manually---used by configure to build Makefiles.
+##
+
+
+# __ppc__ flag for Crypto++
+# paths to GL and GLUT headers
+
+PLATFORM_COMPILE_FLAGS = -DBSD -D__ppc__ -D__mac__ -I/System/Library/Frameworks/OpenGL.framework/Headers -I/System/Library/Frameworks/GLUT.framework/Headers
+
+
+# various frameworks to support OpenGL, GLUT, and portaudio
+PLATFORM_LINK_FLAGS = -framework Cocoa -framework OpenGL -framework GLUT -framework CoreAudio -framework AudioToolbox ${ROOT_PATH}/Transcend/portaudio/lib/libportaudio.a 
+
+
+
+# Nothing special for OS X here
+GXX=g++ 
+LINK_FLAGS =
+
+
+
+##
+# Platform-specific minorGems file path prefixes
+##
+
+PLATFORM = Linux
+PLATFORM_PATH = linux
+
+TIME_PLATFORM = Unix
+TIME_PLATFORM_PATH = unix
+
+DIRECTORY_PLATFORM = Unix
+DIRECTORY_PLATFORM_PATH = unix
+

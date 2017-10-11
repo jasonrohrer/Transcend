@@ -1,0 +1,124 @@
+4. OVERALL GAME CONTEXT
+
+Transcend is an abstract shooting game with geometric, morphing graphics.
+There are three levels.  In each level, the player guides a ship-like glyph 
+around a grid.  Minor anti-glyphs (enemy objects) attack the player's glyph 
+by shooting at it.  When the player's glyph is hit by an enemy projecile, it 
+is knocked toward the center of the grid.
+
+Players can increase the power of their projectiles by gathering elements
+from around the grid and bringing them to the center.  The elements form
+a visual collage, and each element also represents a section of music.
+Thus, while powering up their projectiles, players are also arranging a piece
+of music that plays in the background.  Anti-glyphs also attack the player's 
+collage by shooting at it, and these attacks push elements away from the 
+center. 
+
+The player's goal in each level is to destroy the major anti-glyph, a large
+enemy object that circles around the outskirts of the grid.  When the player
+approaches the major anti-glyph, the anti-glyph attacks the player's glyph
+with powerful projectiles.  The player must shoot the major anti-glyph many
+times in succession to destroy it.  After the major anti-glyph has been
+destroyed, a portal opens that allows the player to move on to the next level.
+
+
+5. VIOLENCE 
+--Violence Depicted:
+--Includes depictions involving injury, damage, death, or destruction of the 
+  following:
+
+Humans:            Never
+Animals:           Never
+Creatures/Robots:  Frequently
+Vehicles:          Never
+Objects:           Never
+
+
+--Describe specific instances of the above forms of violence, and the context 
+  in which they occur:
+
+The player shoots projectiles at abstract enemy entities.  These entities are
+controled by the computer and behave autonomously, so they are best described 
+as "robots" and not as "objects."  However, they do not represent robots 
+specifically, but instead represent an abstract enemy force.  When enemy 
+entities are destroyed, they morph into geometrical explosion displays and 
+then fade away.
+	
+	
+--To what extent can the player control the depictions of violence?
+
+The player hits the SPACE bar to fire each projectile and aims projectiles
+using the ARROW keys.  Thus, the player completely controls each act of 
+violence.  However, the depection of the destruction (in other words, the
+explosion graphics that are displayed in each case) are controled by the
+computer.
+
+
+--Describe how violent acts are rewarded in the game, i.e., is the player 
+  rewarded for successfully completing, avoiding, or preventing acts of 
+  violence, aggression, injury, or death?  Include specific instances of such 
+  rewards, and the context in which they occur:
+
+The player is rewarded indirectly for destroying minor anti-glyphs because the
+player gets a break from enemy attacks until the next wave of anti-glyphs 
+appears.  In other words, it is difficult to build an element collage while
+anti-glyphs are attacking, so the player will benefit from destroying them.
+
+The player is rewarded directly for destroying the major anti-glyph by gaining
+access to the next level.
+
+
+--Violent Sound Effects:
+--Includes all sounds associated with violence, injury, pain, or death.
+
+Violent sound effects heard or depicted:  Frequently
+
+
+--Describe specific instances of these sound effects, and the context in which
+  they occur:
+
+Each projectile fired is accompanied by a musical note.
+Each enemy explosion is also accompanied by a musical sound.
+These sound effects are abstract and do not directly represent a violent act.
+
+
+--Non-adversaries:
+--Includes characters who are non-threatening or non-aggressive to the player,
+  such as bystanders, pedestrians, and teammates.
+
+Player can injure, damage, kill, or destroy non-adversaries:  Never
+
+
+--Blood Effects:
+--Includes all blood-like fluids, regardless of color or how they are depicted,
+  such as puffs, splatters, pooling, or bloodstains.
+
+Blood effects depicted:  Never
+
+
+--Gore:
+--Includes the mutilation of any organism (e.g., humans, animals, aliens, or 
+  other creatures) by dismemberment, decapitation, burning, or other means, 
+  and the depiction of burnt body parts, non-identifiable body parts or "gibs",
+  guts, or severed limbs.
+
+Gore depicted:  Never
+
+
+--Post-Mortem Damage:
+--Includes any damage that can affect the body of a dead organism (including 
+  humans, animals, aliens, or other creatures) by shooting, burning, or other 
+  means, utilizing blood effects, gore effects, rag doll physics, etc.
+
+Post-mortem damage depicted:  Never
+
+
+--Other:
+--Please indicate whether the following themes, information, or actions are 
+  present.
+
+Crude or vulgar acts:                      Never
+Acts of discrimination or racism:          Never
+Sexual violence, rape, or attempted rape:  Never
+Suicide:                                   Never
+Torture:                                   Never

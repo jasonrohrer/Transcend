@@ -1,0 +1,197 @@
+Return-Path: <sborchers@moondancegames.com>
+Received: from sccmmhc91.asp.att.net (sccmmhc91.asp.att.net [204.127.203.211])
+	by services.cse.ucsc.edu (8.13.1/8.13.1) with ESMTP id j7LFjvP3020907
+	for <rohrer@soe.ucsc.edu>; Sun, 21 Aug 2005 08:45:57 -0700 (PDT)
+Message-Id: <200508211545.j7LFjvP3020907@services.cse.ucsc.edu>
+Received: from sarahblaptop (12-214-194-20.client.mchsi.com[12.214.194.20])
+          by sccmmhc91.asp.att.net (sccmmhc91) with SMTP
+          id <20050821154541m9100g6t2pe>; Sun, 21 Aug 2005 15:45:47 +0000
+From: "Sarah Borchers" <sborchers@moondancegames.com>
+To: <rohrer@soe.ucsc.edu>
+Subject: FW: Information for Moondance Games
+Date: Sun, 21 Aug 2005 10:45:42 -0500
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_0003_01C5A63D.7CB72380"
+X-Mailer: Microsoft Office Outlook, Build 11.0.5510
+Thread-Index: AcWYYITMHU7dxcyEQIyaVs9g5St7dwOBnkCw
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.2180
+Status:   
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0003_01C5A63D.7CB72380
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_001_0004_01C5A63D.7CB72380"
+
+
+------=_NextPart_001_0004_01C5A63D.7CB72380
+Content-Type: text/plain;
+	charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+
+Hi Jason,
+
+ 
+
+I apologize; I sent the email requesting information for the compilation to
+an incorrect email address.  I've attached the message below.  Please
+disregard the dates items are due - just send me your information at your
+earliest convenience.  Again, please accept my apologies for the mix-up.  
+
+ 
+
+Regards,
+Sarah Borchers
+
+Moondance Games
+
+763-370-4647
+
+ 
+
+  _____  
+
+From: Sarah Borchers [mailto:sborchers@moondancegames.com] 
+Sent: Wednesday, August 03, 2005 2:21 PM
+To: 'jcr13@users.sf.net'
+Subject: Information for Moondance Games
+
+ 
+
+Hi Jason,
+
+ 
+
+We are excited to have you be on board with this Independent Games product.
+We're now at the point in development where we need some information from
+you in order to best feature you, your company or group, and Transcend.
+This email will outline the various items we will need for you to send to
+us, along with the due dates for this information.  The good news is that
+most (if not all) of the information you'll be providing to us is already
+created, so this process should only take about 30 minutes.  
+
+ 
+
+
+Description
+
+Due Date
+
+
+6 screen shots from the game you'll have on the product.  These screen shots
+are for the general interface of the game to entice users to play your game.
+A screen shot of your game may also be used on the product box, on sell
+sheets, or the Moondance Games website.  
+
+8/12/05
+
+
+A completed ESRB sheet.  I have attached the form that needs to be filled
+out; please complete only sections 4 through 11.   
+
+8/12/05
+
+
+Final credits list.  
+
+8/12/05
+
+
+Minimum system requirements.  We will be performing QA and running the
+compilation through a config lab, however it would be helpful to have
+information about your particular game.  If you're unsure of the
+requirements, an approximation will suffice.  
+
+8/12/05
+
+
+Company/group description.  Please provide a one paragraph description of
+your company or group.  If you would like to have more information on your
+company or group in the CD, you will have an opportunity to do so through
+the "Extras" section. 
+
+8/12/05
+
+
+Game description.  Please provide a one paragraph description of your game.
+If you would like to have more information on your game in the CD, you will
+have an opportunity to do so through the "Extras" section. 
+
+8/12/05
+
+
+Brief feature list.  Please supply 4 to 5 bullet points on what makes your
+game fun and unique.  
+
+8/12/05
+
+
+Genre classification.  Please let us know what genre (action, puzzle, etc.)
+your game falls in to.
+
+8/12/05
+
+
+Acceptable Name Abbreviation:  In some areas of the interface we may need to
+shorten the name that appears for games with long names.  If the title of
+your game is over 25 characters long, please let us know how you would like
+the name abbreviated. 
+
+8/12/05
+
+
+Installer information: If you game already has an installer please let us
+know if there is anything special the installer does. For example, are any
+registry keys created by installer? Are any files installed in locations
+other than the main installation folder?  Is there anything else unusual?
+
+8/12/05
+
+
+Instructions for your game.  Please send us the instructions for users to
+play your game if you haven't already.  The preferred formats are txt and
+html.  
+
+8/19/05
+
+
+Email address for support purposes.
+
+8/19/05
+
+
+Optional: Concept art.  If you have concept art that you would like to show
+off, please send it to us.  
+
+8/12/05
+
+
+Optional: "Extras."  Each game and developer will have an area associated
+with them for extras you wish to share.  For example, you may wish to
+include a link to your blog, or to an essay, or a movie file.   Or perhaps
+you would like to explain why you decided to make your particular game, what
+makes your game unique, or anything in particular you hoped to accomplish in
+making it. 
+
+8/19/05
+
+ 
+
+ Please note that we may edit your submissions for readability purposes.  
+
+ 
+
+We ask that you keep the due dates in mind, as we would like to get this
+product to retailers as soon as feasibly possible.  If you have any
+questions, please contact either Brian Kingsley (
+<mailto:bkingsley@moondancegames.com> bkingsley@moondancegames.com,
+763-234-1116) or myself.
+
+ 
+
+Sarah Borchers
+
+Moondance Games
+
+763-370-4647 

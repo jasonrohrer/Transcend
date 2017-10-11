@@ -1,0 +1,82 @@
+#!/bin/sh
+
+#
+# Modification History
+#
+# 2004-June-22   Jason Rohrer
+# Copied from Monolith wxWindows build script.
+#
+
+
+if [ $# -lt 2 ] ; then
+   echo "Usage: $0 release_name unix_platform_name"
+   exit 1
+fi
+
+
+rm -rf mac
+
+mkdir mac
+
+mkdir mac/Transcend
+
+mkdir mac/Transcend/levels
+mkdir mac/Transcend/levels/001
+mkdir mac/Transcend/levels/001/colors
+
+# these calls will skip CVS directories
+cp ../levels/001/* mac/Transcend/levels/001/
+cp ../levels/001/colors/* mac/Transcend/levels/001/colors/
+
+# remove backup files
+rm mac/Transcend/levels/001/*~
+rm mac/Transcend/levels/001/colors/*~
+
+
+
+mkdir mac/Transcend/levels/002
+mkdir mac/Transcend/levels/002/colors
+
+# these calls will skip CVS directories
+cp ../levels/002/* mac/Transcend/levels/002/
+cp ../levels/002/colors/* mac/Transcend/levels/002/colors/
+
+# remove backup files
+rm mac/Transcend/levels/002/*~
+rm mac/Transcend/levels/002/colors/*~
+
+
+mkdir mac/Transcend/levels/003
+mkdir mac/Transcend/levels/003/colors
+
+# these calls will skip CVS directories
+cp ../levels/003/* mac/Transcend/levels/003/
+cp ../levels/003/colors/* mac/Transcend/levels/003/colors/
+
+# remove backup files
+rm mac/Transcend/levels/003/*~
+rm mac/Transcend/levels/003/colors/*~
+
+
+
+
+cp -r macOSX/Transcend.app mac/Transcend
+cp ../game/Transcend mac/Transcend/Transcend.app/Contents/MacOS
+
+cp ../doc/how_to_*.txt mac/Transcend
+
+rm -r mac/Transcend/Transcend.app/CVS
+rm -r mac/Transcend/Transcend.app/Contents/CVS
+rm -r mac/Transcend/Transcend.app/Contents/MacOS/CVS
+rm -r mac/Transcend/Transcend.app/Contents/Resources/CVS
+
+
+cd mac
+tar cf "Transcend_$1_$2.tar" Transcend
+gzip "Transcend_$1_$2.tar"
+
+
+
+
+
+

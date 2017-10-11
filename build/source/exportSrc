@@ -1,0 +1,2 @@
+cvs -z3 -d:ext:jcr13@cvs.sf.net:/cvsroot/minorgems export -r HEAD minorGems
+cvs -z3 -d:ext:jcr13@cvs.sf.net:/cvsroot/transcend export -r HEAD Transcend

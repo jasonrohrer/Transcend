@@ -1,0 +1,91 @@
+<!--
+
+Modification History
+
+2004-September-3   Jason Rohrer
+Created
+
+2004-September-26   Jason Rohrer
+Added 0.1.2 releases.
+
+2004-October-15   Jason Rohrer
+Added 0.2 release.
+
+-->
+
+
+<HTML>
+
+
+<HEAD>
+<TITLE>Transcend:  a new video game by Jason Rohrer</TITLE>
+</HEAD>
+
+
+<BODY BGCOLOR=#FFFFFF TEXT=#000000 LINK=#0000FF VLINK=#FF0000>
+
+<CENTER><IMG SRC="images/logo.jpg" WIDTH=495 HEIGHT=78><BR>
+a video game by <A HREF="http://hcsoftware.sf.net/jason-rohrer">Jason Rohrer</A><BR>
+<BR>
+
+<TABLE WIDTH=75%>
+<TR>
+<TD>
+
+<H2>IGF 2004</H2>
+
+The following downloads have been submitted to IGF (the most recent are listed first).  Note that the <B>alternate</B> downloads are available in case the SourceForge mirror system is buggy (some mirrors are slow to update).  Please try the SourceForge mirrors first.<BR>
+<BR>
+
+Note:<BR>
+The Transcend window defaults to being rather small at startup (300x300) to accommodate slower systems.  <B>Please resize the window before playing</B> according to your monitor size and system speed (if you have a reasonable 3D card, window size will not affect frame rate, so bigger windows are generally better).
+
+
+
+<H3>First Update</H3>
+Version 0.2 released on October 15, 2004.  This version includes three levels. (<A HREF="http://cvs.sourceforge.net/viewcvs.py/*checkout*/transcend/Transcend/doc/changeLog.txt?rev=HEAD">change log</A>)<BR>
+<BR>
+
+<B>Important Note 1:</B> The keyboard layout has changed slightly in 0.2.  Most important is the grab/drop key, which is now D (instead of G).  See the included <TT>how_to_play.txt</TT> for more information.<BR>
+<BR>
+
+<B>Cheat for judges:</B> Version 0.2 includes a cheat (for judges only) that allows you to skip levels.  Press the <B>8</B> key at any time to move instantly to the next level.  This cheat is provided so that you can explore the design of advanced Transcend levels without spending too much time beating difficult enemies.<BR>
+<BR>
+
+
+<A HREF="http://prdownloads.sourceforge.net/transcend/Transcend_0.2-IGF-2_OSX.dmg?download">MacOS X</A> [<A HREF="downloads/Transcend_0.2-IGF-2_OSX.dmg">alternate</A>] -- 10.2 and later.<BR><BR>
+
+<A HREF="http://prdownloads.sourceforge.net/transcend/Transcend_0.2-IGF-2_Windows.exe?download">Windows 95/98/2000/XP</A> [<A HREF="downloads/Transcend_0.2-IGF-2_Windows.exe">alternate</A>] -- Includes the GLUT library.<BR>
+<BR>
+
+<A HREF="http://prdownloads.sourceforge.net/transcend/Transcend_0.2-IGF-2_UnixSource.tar.gz?download">Unix Source Code</A> [<A HREF="downloads/Transcend_0.2-IGF-2_UnixSource.tar.gz">alternate</A>] -- Compile yourself.  Requires the GLUT development library [<A HREF="http://www.opengl.org/resources/libraries/glut/glut-3.7.tar.gz">GLUT source</A>] [<A HREF="http://rpmfind.net/linux/rpm2html/search.php?query=glut">GLUT RPMs</A>].<BR><BR>
+
+
+
+
+<H3>Initial Submission</H3>
+Version 0.1.2 released on September 26, 2004.  This version includes two levels. (<A HREF="http://cvs.sourceforge.net/viewcvs.py/*checkout*/transcend/Transcend/doc/changeLog.txt?rev=HEAD">change log</A>)<BR>
+<BR>
+
+<A HREF="http://prdownloads.sourceforge.net/transcend/Transcend_0.1.2_OSX.dmg?download">MacOS X</A> [<A HREF="downloads/Transcend_0.1.2_OSX.dmg">alternate</A>] -- 10.2 and later.<BR><BR>
+
+<A HREF="http://prdownloads.sourceforge.net/transcend/Transcend_0.1.1-IGF-1_Windows.exe?download">Windows 95/98/2000/XP</A> [<A HREF="downloads/Transcend_0.1.1-IGF-1_Windows.exe">alternate</A>] -- Includes the GLUT library.<BR>
+<BR>
+
+<A HREF="http://prdownloads.sourceforge.net/transcend/Transcend_0.1.2_UnixSource.tar.gz?download">Unix Source Code</A> [<A HREF="downloads/Transcend_0.1.2_UnixSource.tar.gz">alternate</A>] -- Compile yourself.  Requires the GLUT development library [<A HREF="http://www.opengl.org/resources/libraries/glut/glut-3.7.tar.gz">GLUT source</A>] [<A HREF="http://rpmfind.net/linux/rpm2html/search.php?query=glut">GLUT RPMs</A>].<BR><BR>
+
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+
+
+
+</BODY>
+
+
+</HTML>

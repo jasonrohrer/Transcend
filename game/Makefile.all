@@ -1,0 +1,96 @@
+#
+# Modification History
+#
+# 2004-June-10    Jason Rohrer
+# Created.  Copied from Monolith text UI.
+#
+
+
+##
+# The portion of Transcend command-line-UI Makefiles common to all 
+# platforms.
+# Should not be made manually---used by Transcend/configure to build Makefiles.
+##
+
+
+
+
+ROOT_PATH = ../..
+
+
+
+
+LAYER_SOURCE = \
+ game.cpp \
+ DrawableObject.cpp \
+ LevelDirectoryManager.cpp \
+ NamedColorFactory.cpp \
+ ParameterizedSpace.cpp \
+ ParameterSpaceControlPoint.cpp \
+ ObjectParameterSpaceControlPoint.cpp \
+ ParameterizedObject.cpp \
+ ShipBullet.cpp \
+ ShipBulletManager.cpp \
+ Enemy.cpp \
+ EnemyManager.cpp \
+ SculptureManager.cpp \
+ BossManager.cpp \
+ PortalManager.cpp \
+ SoundSamples.cpp \
+ SoundPlayer.cpp \
+ ReverbSoundFilter.cpp \
+ SoundParameterSpaceControlPoint.cpp \
+ StereoSoundParameterSpaceControlPoint.cpp \
+ ParameterizedStereoSound.cpp \
+ OnePointPlayableSound.cpp \
+ BulletSound.cpp \
+ MusicNoteWaveTable.cpp \
+ MusicPart.cpp \
+ MusicPlayer.cpp
+
+LAYER_OBJECTS = ${LAYER_SOURCE:.cpp=.o}
+
+NEEDED_MINOR_GEMS_OBJECTS = \
+ ${SCREEN_GL_O} \
+ ${TYPE_IO_O} \
+ ${STRING_UTILS_O} \
+ ${STRING_BUFFER_OUTPUT_STREAM_O} \
+ ${PATH_O} \
+ ${TIME_O} \
+ ${THREAD_O} \
+ ${MUTEX_LOCK_O}
+ 
+
+
+TEST_SOURCE = 
+TEST_OBJECTS = ${TEST_SOURCE:.cpp=.o}
+
+
+
+DEPENDENCY_FILE = Makefile.dependencies
+
+
+# targets
+
+all: Transcend
+clean:
+	rm -f ${DEPENDENCY_FILE} ${LAYER_OBJECTS} ${TEST_OBJECTS} ${NEEDED_MINOR_GEMS_OBJECTS} Transcend
+
+
+
+
+Transcend: ${LAYER_OBJECTS} ${NEEDED_MINOR_GEMS_OBJECTS}
+	${EXE_LINK} -o Transcend ${LAYER_OBJECTS} ${NEEDED_MINOR_GEMS_OBJECTS} ${PLATFORM_LINK_FLAGS}
+
+
+
+
+# build the dependency file
+${DEPENDENCY_FILE}: ${LAYER_SOURCE} ${TEST_SOURCE}
+	rm -f ${DEPENDENCY_FILE}
+	${COMPILE} -MM ${LAYER_SOURCE} ${TEST_SOURCE} >> ${DEPENDENCY_FILE}
+
+
+include ${DEPENDENCY_FILE}
+
+

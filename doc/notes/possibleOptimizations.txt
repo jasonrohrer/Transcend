@@ -1,0 +1,5 @@
+Could do to increase framerate
+
+--Change ShipBullet.cpp and Enemy.cpp to not blend endpoints if range
+  parameter is either 0 or 1 (i.e., use either endpoint directly without
+  blending).

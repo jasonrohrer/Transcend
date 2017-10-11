@@ -1,0 +1,89 @@
+Version 0.3    2005-August-30
+
+--Fixed bugs that caused post-explosion fade factors to become negative, which
+  in turn caused boss explosions to linger on some platforms.
+
+--Fixed zoom behavior when strafing.
+
+--Added fade-in when enemies are created to avoid a visual pop-in.
+
+--Added smooth turning when enemies switch targets.
+
+--Changed so that pieces can be picked up while they are moving as a result
+  of enemy fire.  This makes pick up less confusing and frustrating.
+
+--Made bullet fade-out smoothly at end of range to avoid visual pop.
+
+--Doubled piece pick-up radius to make picking up pieces easier.
+
+--Fixed jerky piece pick-up and drop.
+
+--Added mini-explosion graphics to indicate when damage is being done to boss.
+  These graphics also change color to indicate the boss' health. 
+
+
+
+
+Version 0.1    2004-September-1
+--Initial release
+
+
+
+
+Version 0.1.1-IGF-1  2004-September-3
+(Final submission for first round of IGF 2005)
+
+--Added fades to beginning and end of each sound effect to reduce clicks.
+
+--Changed enemy logic so that they back off after they knock your ship back
+  to the center.
+
+--Made grid coloring in relation to boss position smoother and more detailed.
+
+--Added grid coloring in relation to ship position.
+
+--Improved logic that determines whether a piece is in or out of the collage. 
+
+
+
+
+Version 0.1.2   2004-September-26
+
+--Added a missing dependency to the GNU/Linux X86 makefile.
+
+--Shortened Mac download file name to make Internet Explorer happy.
+
+
+
+
+Version 0.2-IGF-2  2004-October-15
+
+--Added strafe keys ('S' and 'F').
+
+--Switched grab/drop key to 'D' to improve key layout (in between new strafe 
+  keys).
+
+--Parameterized grid size so that it can vary from level to level.
+
+--Added a bullet limit that makes space-bar mashing ineffective.
+
+--Made starting bullet shape much smaller in all levels to make its weakness
+  more obvious.
+
+--Added a portal object that appears after the boss is dead.  If you delay
+  passing through the portal, you can explore the music Elements before moving
+  on to the next level without being bothered by enemies.
+
+--Added a zoom-in effect at the start of each level to give a quick overview
+  of the level layout.
+
+--Fixed a bug that resulted in keys getting "stuck" down.
+
+--Fixed a bugs in the frame timing code.  This fix results in a smoother 
+  framerate and fixes a bug that could cause enemies to move far off-screen.
+
+--Added a new level.
+
+
+
+

@@ -1,0 +1,181 @@
+<!--
+
+Modification History
+
+2004-September-1   Jason Rohrer
+Created
+
+2004-September-26   Jason Rohrer
+Added 0.1.2 releases.
+
+2004-September-30   Jason Rohrer
+Added links to dev resources.
+
+2004-October-15   Jason Rohrer
+Added 0.2 release.
+
+
+2005-September-1   Jason Rohrer
+Added 0.3 release.
+
+
+-->
+
+
+<HTML>
+
+
+<HEAD>
+<TITLE>Transcend:  a new video game by Jason Rohrer</TITLE>
+</HEAD>
+
+
+<BODY BGCOLOR=#FFFFFF TEXT=#000000 LINK=#0000FF VLINK=#FF0000>
+
+<CENTER><IMG SRC="images/logo.jpg" WIDTH=495 HEIGHT=78><BR>
+a video game by <A HREF="http://hcsoftware.sf.net/jason-rohrer">Jason Rohrer</A><BR>
+<BR>
+
+<TABLE WIDTH=75%>
+<TR>
+<TD>
+
+Transcend can best be described as retro-style, abstract, 2D shooter.  The graphics are geometrical, and the pace is sometimes frenzied.<BR>
+<BR>  
+
+Two features set Transcend apart from other games.  First, its <B>dynamic graphical engine</B>, which can smoothly morph from one complex shape to another, produces striking displays.  Combining these dynamic shapes with subtle randomizations makes each play through a Transcend level visually different from the last.  The second novel feature is Transcend's <B>musical power-up system</B>.  As you play through a level, you are simultaneously assembling an abstract visual collage and arranging a unique piece of music.  Transcend merges video games with pure art---it can be viewed either as a game or as a multimedia sculpture.<BR>
+<BR>
+Though I first read it <I>after</I> developing Transcend, the <A HREF="http://www.the-underdogs.info/scratch.php">Scratchware Manifesto</A> captures the spirit that motivated me to develop a game.   
+
+
+<H2>Requirements</H2>
+
+Required:
+<UL>
+<LI>Stereo headphones or speakers</LI>
+<LI>OpenGL</LI>
+<LI>Keyboard</LI>
+</UL>
+
+Recommended:
+<UL>
+<LI>3D card that can render OpenGL</LI>
+<LI>400 MHz or faster processor</LI>
+</UL>
+
+Notes:<BR>
+Development and testing took place on a 250 MHz PPC computer <I>without</I> a 3D accelerator card (in other words, using software OpenGL rendering).  
+Transcend is actually playable on a meager system like this, though it runs a lot smoother on a faster computer with a 3D card.<BR>
+<BR>
+The Transcend window defaults to being rather small at startup (300x300) to accommodate slower systems.  <B>Please resize the window before playing</B> according to your monitor size and system speed (if you have a reasonable 3D card, window size will not affect frame rate, so bigger windows are generally better). 
+
+<BR>
+<BR>
+<CENTER>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="jcr13@users.sf.net">
+<input type="hidden" name="item_name" value="The Transcend Project">
+<input type="hidden" name="no_shipping" value="1">
+<input type="hidden" name="return" value="http://transcend.sf.net">
+<input type="hidden" name="cancel_return" value="http://transcend.sf.net">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="tax" value="0">
+<input type="hidden" name="custom" value="Transcend_donate">
+<!--
+<input type="hidden" name="notify_url" value="http://mute-net.sf.net/cgi-bin/donationTracker.pl">-->
+
+<TABLE BORDER=0 CELLSPACING=5 CELLPADDING=0>
+<TR>
+<TD VALIGN=MIDDLE>Think Transcend is cool?  Donate a dollar.<BR>
+<A HREF="http://hcsoftware.sf.net/jason-rohrer/supportMyWork.html">Why support my work?</A></TD> 
+<TD VALIGN=MIDDLE><input type="image" src="https://www.paypal.com/images/x-click-but04.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" ALIGN=MIDDLE></TD>
+</TR>
+</TABLE>
+</form>
+</CENTER>
+
+
+
+<H2>Downloads</H2>
+
+Version 0.3 released on August 30, 2005.  This version includes three levels. (<A HREF="http://transcend.cvs.sf.net/viewvc/*checkout*/transcend/Transcend/doc/changeLog.txt?revision=HEAD">change log</A>)<BR>
+<BR>
+
+Clicking a download link below will lead you a list of download <I>mirrors</I>---pick the server that is closest to your geographical location.<BR>
+<BR>
+
+<A HREF="http://prdownloads.sourceforge.net/transcend/Transcend_0.3_MacOSX.dmg?download">MacOS X</A> -- (tested on 10.2).<BR><BR>
+
+<A HREF="http://prdownloads.sourceforge.net/transcend/Transcend_0.3_Windows.exe?download">Windows 95/98/2000/XP</A> -- Includes the GLUT library.<BR>
+<BR>
+
+<A HREF="http://prdownloads.sourceforge.net/transcend/Transcend_0.3_UnixSource.tar.gz?download">Unix Source Code</A> -- Compile yourself.  Requires the GLUT development library [<A HREF="http://www.opengl.org/resources/libraries/glut/glut-3.7.tar.gz">GLUT source</A>] [<A HREF="http://rpmfind.net/linux/rpm2html/search.php?query=glut">GLUT RPMs</A>].<BR><BR>
+
+Transcend is free software (released under the <A HREF="http://www.gnu.org/licenses/gpl.html">GNU GPL</A>)
+
+
+<H2>Screenshots</H2>
+Keep in mind that Transcend's dynamic, morphing graphics cannot be captured in still pictures.<BR>
+<BR>
+
+<CENTER>
+<IMG SRC="images/moondance_screen1.png" WIDTH=501 HEIGHT=501><BR> 
+Destroying a minor anti-glyph near the collage (level1).<BR>
+<BR>
+
+<IMG SRC="images/moondance_screen2.png" WIDTH=501 HEIGHT=501><BR> 
+Shooting a stream of projectiles past the major anti-glyph.<BR>
+<BR>
+
+<IMG SRC="images/moondance_screen3.png" WIDTH=501 HEIGHT=501><BR> 
+Damaging the major anti-glyph.<BR>
+<BR>
+
+<IMG SRC="images/moondance_screen4.png" WIDTH=501 HEIGHT=501><BR> 
+Destroying the major anti-glyph.<BR>
+<BR>
+
+<IMG SRC="images/moondance_screen5.png" WIDTH=501 HEIGHT=501><BR> 
+Destroying a minor anti-glyph near the collage (level2).<BR>
+<BR>
+
+<IMG SRC="images/moondance_screen6.png" WIDTH=501 HEIGHT=501><BR> 
+Attacking the major anti-glyph with a stream of projectiles.<BR>
+<BR>
+
+</CENTER>
+
+<H2>Development</H2>
+
+Development is managed through the <A HREF="http://sf.net/projects/transcend">SourceForge Project Page</A>.  On that page, you can submit bug reports and feature requests.  You can also <A HREF="http://cvs.sourceforge.net/viewcvs.py/transcend/">browse the source code</A> in CVS or <A HREF="http://sourceforge.net/cvs/?group_id=117745">checkout the latest source</A> to compile a bleeding-edge version for yourself.<BR>
+<BR>
+I have posted some <A HREF="roughEditInstructions.txt">rough instructions</A> about how to edit Transcend levels.  More information about this topic will be added in the future.
+
+
+</TD>
+</TR>
+
+<TR>
+<TD ALIGN=RIGHT>
+hosted by:<BR>
+<A href="http://sourceforge.net"> 
+<IMG src="http://sourceforge.net/sflogo.php?group_id=117745&type=1" 
+width="88" height="31" border="0" alt="SourceForge Logo"></A>
+</TD>
+</TR>
+
+</TABLE>
+
+
+
+
+
+
+
+</BODY>
+
+
+</HTML>

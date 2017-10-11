@@ -1,0 +1,4 @@
+Transcend does not create or modify any files outside of its own folder.
+
+Thus, to uninstall, simply drag the Transcend folder into the Trash or Recycle
+Bin.

@@ -1,0 +1,138 @@
+#!/bin/sh
+
+#
+# Modification History
+#
+# 2004-June-22   Jason Rohrer
+# Copied from Monolith wxWindows build.
+#
+
+
+if [ $# -lt 2 ] ; then
+   echo "Usage: $0 release_name unix_platform_name"
+   exit 1
+fi
+
+
+rm -rf unix
+rm -rf windows
+
+mkdir windows
+mkdir unix
+
+
+# work on unix tree first
+mkdir unix/Transcend
+
+mkdir unix/Transcend/levels
+mkdir unix/Transcend/levels/001
+mkdir unix/Transcend/levels/001/colors
+
+# these calls will skip CVS directories
+cp ../levels/001/* unix/Transcend/levels/001/
+cp ../levels/001/colors/* unix/Transcend/levels/001/colors/
+
+# remove backup files
+rm unix/Transcend/levels/001/*~
+rm unix/Transcend/levels/001/colors/*~
+
+
+
+mkdir unix/Transcend/levels/002
+mkdir unix/Transcend/levels/002/colors
+
+# these calls will skip CVS directories
+cp ../levels/002/* unix/Transcend/levels/002/
+cp ../levels/002/colors/* unix/Transcend/levels/002/colors/
+
+# remove backup files
+rm unix/Transcend/levels/002/*~
+rm unix/Transcend/levels/002/colors/*~
+
+
+mkdir unix/Transcend/levels/003
+mkdir unix/Transcend/levels/003/colors
+
+# these calls will skip CVS directories
+cp ../levels/003/* unix/Transcend/levels/003/
+cp ../levels/003/colors/* unix/Transcend/levels/003/colors/
+
+# remove backup files
+rm unix/Transcend/levels/003/*~
+rm unix/Transcend/levels/003/colors/*~
+
+
+cp ../doc/how_to_*.txt unix/Transcend/
+
+
+
+
+
+# duplicate unix tree so far to make windows tree
+cp -r unix/Transcend windows/
+
+cp ../game/Transcend unix/Transcend/
+
+cp win32/Transcend.exe win32/*.dll windows/Transcend/
+
+cd unix
+tar cf "Transcend_$1_$2.tar" Transcend
+gzip "Transcend_$1_$2.tar"
+
+
+# compile unix2dos
+cd ..
+g++ -o unix2dos unix2dos.c 
+cp unix2dos windows
+cp unix2dosScript windows
+
+
+cd windows
+for file in Transcend/levels/001/*
+do
+    ./unix2dosScript "$file"
+done
+
+for file in Transcend/levels/001/colors/*
+do
+    ./unix2dosScript "$file"
+done
+
+
+for file in Transcend/levels/002/*
+do
+    ./unix2dosScript "$file"
+done
+
+
+for file in Transcend/levels/002/colors/*
+do
+    ./unix2dosScript "$file"
+done
+
+
+for file in Transcend/levels/003/*
+do
+    ./unix2dosScript "$file"
+done
+
+
+for file in Transcend/levels/003/colors/*
+do
+    ./unix2dosScript "$file"
+done
+
+
+for file in Transcend/how_to_*.txt
+do
+	./unix2dosScript "$file"
+done
+
+
+
+zip -r "Transcend_$1_Windows.zip" Transcend
+
+
+
+
+
